@@ -7,17 +7,20 @@ import com.cgvsu.rasterization.model.BezierCurve;
 import com.cgvsu.rasterization.model.ControlPoint;
 import javafx.scene.paint.Color;
 
-/**
- * Основной класс для отрисовки всех элементов сцены
- */
+// основной класс для отрисовки всех элементов сцены
+
 public class Renderer {
+
     private final CanvasContext context;
 
     public Renderer(CanvasContext context) {
+
         this.context = context;
+
     }
 
     public void renderScene(BezierCurve curve) {
+
         // очистка сцены
         context.clear(Color.WHITE);
 
@@ -34,10 +37,13 @@ public class Renderer {
     }
 
     private void renderControlPolygon(BezierCurve curve) {
-        var points = curve.getControlPoints();
-        for (int i = 0; i < points.size() - 1; i++) {
-            ControlPoint p1 = points.get(i);
-            ControlPoint p2 = points.get(i + 1);
+
+        var points = curve.getControlPoints(); // автоматический вывод типа для безопаски
+
+        for (int i = 0; i < points.size() - 1; i++) { // проходка между точками
+
+            ControlPoint p1 = points.get(i); // начало отрезка
+            ControlPoint p2 = points.get(i + 1); // конец отрезка
 
             new BresenhamAlgorithm(
                     (int) Math.round(p1.getX()),
@@ -49,12 +55,14 @@ public class Renderer {
     }
 
     private void renderControlPoints(BezierCurve curve) {
-        for (ControlPoint point : curve.getControlPoints()) {
+
+        for (ControlPoint point : curve.getControlPoints()) { // для контрольной т
+
             new CircleAlgorithm(
                     (int) Math.round(point.getX()),
                     (int) Math.round(point.getY()),
                     6
-            ).draw(context, point.getColor());
+            ).draw(context, point.getColor()); // смотря какой выбор
         }
     }
 }
