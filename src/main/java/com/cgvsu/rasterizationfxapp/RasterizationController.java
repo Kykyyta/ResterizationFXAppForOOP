@@ -12,22 +12,26 @@ import javafx.scene.layout.AnchorPane;
 import java.util.Optional;
 
 public class RasterizationController {
-    @FXML private AnchorPane anchorPane;
-    @FXML private Canvas canvas;
 
-    private final BezierCurve bezierCurve = new BezierCurve();
+    @FXML private AnchorPane anchorPane; // связь с элементами из FXML
+    @FXML private Canvas canvas; // холст
+
+    private final BezierCurve bezierCurve = new BezierCurve(); // модель кривой
     private Optional<ControlPoint> selectedPoint = Optional.empty();
-    private boolean isDragging = false;
+    private boolean isDragging = false; // перетаскивание
     private static final double SNAP_DISTANCE = 20.0;
 
     @FXML
     private void initialize() {
-        setupCanvasResizing();
-        setupMouseHandlers();
-        redrawCanvas();
+
+        setupCanvasResizing(); // размер
+        setupMouseHandlers(); // мышь
+        redrawCanvas(); // первоначальная отрисовка
+
     }
 
     private void setupCanvasResizing() {
+
         anchorPane.prefWidthProperty().addListener((obs, oldVal, newVal) -> {
             canvas.setWidth(newVal.doubleValue());
             redrawCanvas();
@@ -96,14 +100,16 @@ public class RasterizationController {
     }
 
     private void handleRightClick(Point2D clickPoint) {
+
         Optional<ControlPoint> pointToRemove = bezierCurve.findPointAt(clickPoint, SNAP_DISTANCE);
         pointToRemove.ifPresent(point -> {
             bezierCurve.removeControlPoint(point);
             redrawCanvas();
         });
+
     }
 
-    private void redrawCanvas() {
+    private void redrawCanvas() { // перерисовка холста
         Rasterization.drawBezierCurve(
                 canvas.getGraphicsContext2D(),
                 (int) canvas.getWidth(),
