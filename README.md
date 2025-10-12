@@ -32,25 +32,27 @@
 
 Проект построен по принципам **MVC (Model-View-Controller)** и **Strategy Pattern** для обеспечения чистоты кода и легкой расширяемости.
 
-### Структура проекта
-📦 src/main/java/com/cgvsu/
-├── 🧮 rasterization/
-│ ├── 🎯 algorithm/ # Алгоритмы (Strategy Pattern)
-│ │ ├── DrawingAlgorithm.java
-│ │ ├── BezierAlgorithm.java
-│ │ ├── BresenhamAlgorithm.java
-│ │ └── CircleAlgorithm.java
-│ ├── 📐 model/ # Бизнес-логика и данные
-│ │ ├── BezierCurve.java
-│ │ ├── ControlPoint.java
-│ │ └── Point2D.java
-│ ├── 👁️ render/ # Представление
-│ │ ├── CanvasContext.java
-│ │ └── Renderer.java
-│ └── Rasterization.java # Фасад
-└── 🎮 rasterizationfxapp/ # Контроллеры и приложение
-├── RasterizationApplication.java
-└── RasterizationController.java
+
+# 🏗️ Структура проекта
+
+**src/main/java/com/cgvsu/**
+- **rasterization/**
+  - **algorithm/** - Алгоритмы (Strategy Pattern)
+    - DrawingAlgorithm.java
+    - BezierAlgorithm.java  
+    - BresenhamAlgorithm.java
+    - CircleAlgorithm.java
+  - **model/** - Бизнес-логика и данные
+    - BezierCurve.java
+    - ControlPoint.java
+    - Point2D.java
+  - **render/** - Представление
+    - CanvasContext.java
+    - Renderer.java
+  - Rasterization.java - Фасад
+- **rasterizationfxapp/** - Контроллеры и приложение
+  - RasterizationApplication.java
+  - RasterizationController.java
 
 
 ### Компоненты архитектуры
