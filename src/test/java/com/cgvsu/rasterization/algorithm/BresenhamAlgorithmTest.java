@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BresenhamAlgorithmTest {
 
     @Test
-    void testDrawHorizontalLine() {
+    void testDrawHorizontalLine() { // рисование горизонтальных линий
         TestCanvasContext context = new TestCanvasContext();
         BresenhamAlgorithm algorithm = new BresenhamAlgorithm(10, 10, 50, 10);
 
@@ -17,7 +17,6 @@ class BresenhamAlgorithmTest {
         assertTrue(pixelCount >= 41,
                 "Горизонтальная линия длиной 40 пикселей должна нарисовать хотя бы 41 пиксель. Получено: " + pixelCount);
 
-        // Проверяем что линия горизонтальная
         for (int x = 10; x <= 50; x++) {
             assertTrue(context.wasPixelSet(x, 10),
                     "Пиксель на позиции (" + x + ", 10) должен быть установлен");
@@ -25,7 +24,7 @@ class BresenhamAlgorithmTest {
     }
 
     @Test
-    void testDrawVerticalLine() {
+    void testDrawVerticalLine() { // аналогично верт
         TestCanvasContext context = new TestCanvasContext();
         BresenhamAlgorithm algorithm = new BresenhamAlgorithm(10, 10, 10, 50);
 
@@ -42,7 +41,7 @@ class BresenhamAlgorithmTest {
     }
 
     @Test
-    void testDrawDiagonalLine() {
+    void testDrawDiagonalLine() { // диагональки
         TestCanvasContext context = new TestCanvasContext();
         BresenhamAlgorithm algorithm = new BresenhamAlgorithm(10, 10, 50, 50);
 
@@ -59,7 +58,7 @@ class BresenhamAlgorithmTest {
     }
 
     @Test
-    void testDrawSinglePoint() {
+    void testDrawSinglePoint() { // точка
         TestCanvasContext context = new TestCanvasContext();
         BresenhamAlgorithm algorithm = new BresenhamAlgorithm(25, 25, 25, 25);
 
@@ -72,7 +71,7 @@ class BresenhamAlgorithmTest {
     }
 
     @Test
-    void testDrawShortLine() {
+    void testDrawShortLine() { // короткой
         TestCanvasContext context = new TestCanvasContext();
         BresenhamAlgorithm algorithm = new BresenhamAlgorithm(10, 10, 15, 15);
 
