@@ -19,19 +19,19 @@ class BezierCurveTest {
     }
 
     @Test
-    void testAddControlPoint() {
+    void testAddControlPoint() { // проверка добавление точек в кривую
         curve.addControlPoint(point1);
         assertEquals(1, curve.getControlPoints().size());
         assertTrue(curve.getControlPoints().contains(point1));
     }
 
     @Test
-    void testAddNullPointThrowsException() {
+    void testAddNullPointThrowsException() { // защита от добавления null точек
         assertThrows(IllegalArgumentException.class, () -> curve.addControlPoint(null));
     }
 
     @Test
-    void testRemoveControlPoint() {
+    void testRemoveControlPoint() { // удаление точек
         curve.addControlPoint(point1);
         curve.addControlPoint(point2);
 
@@ -41,13 +41,13 @@ class BezierCurveTest {
     }
 
     @Test
-    void testRemoveNonExistentPoint() {
+    void testRemoveNonExistentPoint() { // попытка удалить несуществующую точку
         curve.addControlPoint(point1);
         assertFalse(curve.removeControlPoint(point2));
     }
 
     @Test
-    void testFindPointByPosition() {
+    void testFindPointByPosition() { // проверка поиска точки по клику для перетаскивания
         curve.addControlPoint(point1);
         curve.addControlPoint(point2);
 
@@ -59,7 +59,7 @@ class BezierCurveTest {
     }
 
     @Test
-    void testFindPointNotFound() {
+    void testFindPointNotFound() { // если точка не найдена
         curve.addControlPoint(point1);
 
         Point2D searchPosition = new Point2D(100, 100);
@@ -69,7 +69,7 @@ class BezierCurveTest {
     }
 
     @Test
-    void testCanDrawCurve() {
+    void testCanDrawCurve() { // можно ли рисовать кривую(min 2 точки нужно)
         assertFalse(curve.canDrawCurve());
 
         curve.addControlPoint(point1);
@@ -80,7 +80,7 @@ class BezierCurveTest {
     }
 
     @Test
-    void testDeselectAllPoints() {
+    void testDeselectAllPoints() { // снятие выделения со всех точек
         point1.setSelected(true);
         point2.setSelected(true);
 
