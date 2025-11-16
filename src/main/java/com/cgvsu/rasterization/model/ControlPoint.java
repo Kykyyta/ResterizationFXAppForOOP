@@ -56,4 +56,9 @@ public class ControlPoint {
     public int hashCode() {
         return id; // для корректной работы с коллекциями
     }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
 }
