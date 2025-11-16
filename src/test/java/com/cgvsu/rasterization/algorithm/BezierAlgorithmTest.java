@@ -21,7 +21,6 @@ class BezierAlgorithmTest {
 
     @Test
     void testDrawWithInsufficientPoints() {
-        // Только одна точка
         curve.addControlPoint(new ControlPoint(new Point2D(50, 50)));
 
         BezierAlgorithm algorithm = new BezierAlgorithm(curve);
@@ -33,7 +32,6 @@ class BezierAlgorithmTest {
 
     @Test
     void testDrawWithTwoPoints() {
-        // Прямая линия
         curve.addControlPoint(new ControlPoint(new Point2D(20, 20)));
         curve.addControlPoint(new ControlPoint(new Point2D(80, 80)));
 
@@ -43,7 +41,6 @@ class BezierAlgorithmTest {
         assertTrue(testContext.getPixelSetCount() > 10,
                 "Линия между двумя точками должна нарисовать более 10 пикселей");
 
-        // Проверяем что начальная и конечная точки приблизительно нарисованы
         boolean hasStartPixel = false;
         boolean hasEndPixel = false;
 
@@ -64,8 +61,7 @@ class BezierAlgorithmTest {
     }
 
     @Test
-    void testDrawWithThreePoints() {
-        // Квадратичная кривая Безье
+    void testDrawWithThreePoints() { // квадратическая кривая Безье
         curve.addControlPoint(new ControlPoint(new Point2D(20, 80)));
         curve.addControlPoint(new ControlPoint(new Point2D(50, 20)));
         curve.addControlPoint(new ControlPoint(new Point2D(80, 80)));
@@ -78,8 +74,7 @@ class BezierAlgorithmTest {
     }
 
     @Test
-    void testDrawWithFourPoints() {
-        // Кубическая кривая Безье
+    void testDrawWithFourPoints() { // кубическая кривая Безье
         curve.addControlPoint(new ControlPoint(new Point2D(20, 80)));
         curve.addControlPoint(new ControlPoint(new Point2D(40, 20)));
         curve.addControlPoint(new ControlPoint(new Point2D(60, 20)));
