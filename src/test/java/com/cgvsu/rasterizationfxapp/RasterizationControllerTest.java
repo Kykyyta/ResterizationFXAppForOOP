@@ -9,20 +9,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class RasterizationControllerTest {
 
     @Test
-    void testBezierCurveCreation() {
+    void testBezierCurveCreation() { // иницилизация кривой
         BezierCurve curve = new BezierCurve();
         assertNotNull(curve);
     }
 
     @Test
-    void testAddPointToCurve() {
+    void testAddPointToCurve() { // добавление по клику?
         BezierCurve curve = new BezierCurve();
         curve.addControlPoint(new ControlPoint(new Point2D(10, 10)));
         assertEquals(1, curve.getControlPoints().size());
     }
 
     @Test
-    void testCanDrawWithTwoPoints() {
+    void testCanDrawWithTwoPoints() { // рисование при наличии 2+ точек
         BezierCurve curve = new BezierCurve();
         curve.addControlPoint(new ControlPoint(new Point2D(0, 0)));
         curve.addControlPoint(new ControlPoint(new Point2D(10, 10)));
