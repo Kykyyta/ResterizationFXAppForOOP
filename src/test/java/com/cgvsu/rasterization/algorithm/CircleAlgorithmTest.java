@@ -7,19 +7,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class CircleAlgorithmTest {
 
     @Test
-    void testDrawSmallCircle() {
+    void testDrawSmallCircle() { //
         TestCanvasContext context = new TestCanvasContext();
         CircleAlgorithm algorithm = new CircleAlgorithm(50, 50, 10);
 
         algorithm.draw(context, Color.BLACK);
 
-        // Должен нарисовать хотя бы несколько пикселей
         assertTrue(context.getPixelSetCount() > 0, "Круг должен нарисовать хотя бы несколько пикселей");
 
-        // Центр должен быть закрашен
         assertTrue(context.wasPixelSet(50, 50), "Центр круга должен быть закрашен");
 
-        // Проверяем граничные точки круга
         assertTrue(context.wasPixelSet(50, 40) || context.wasPixelSet(50, 60) ||
                         context.wasPixelSet(40, 50) || context.wasPixelSet(60, 50),
                 "Должны быть закрашены граничные точки круга");
@@ -38,9 +35,8 @@ class CircleAlgorithmTest {
     }
 
     @Test
-    void testDrawCircleAtEdge() {
+    void testDrawCircleAtEdge() { // у края холста
         TestCanvasContext context = new TestCanvasContext();
-        // Круг у левого верхнего края
         CircleAlgorithm algorithm = new CircleAlgorithm(5, 5, 5);
 
         algorithm.draw(context, Color.BLACK);
@@ -49,7 +45,7 @@ class CircleAlgorithmTest {
     }
 
     @Test
-    void testDrawCircleWithZeroRadius() {
+    void testDrawCircleWithZeroRadius() { // точка
         TestCanvasContext context = new TestCanvasContext();
         CircleAlgorithm algorithm = new CircleAlgorithm(50, 50, 0);
 
@@ -60,7 +56,7 @@ class CircleAlgorithmTest {
     }
 
     @Test
-    void testDrawMultipleCircles() {
+    void testDrawMultipleCircles() { // несколько
         TestCanvasContext context = new TestCanvasContext();
 
         new CircleAlgorithm(30, 30, 10).draw(context, Color.BLACK);
